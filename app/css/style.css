@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'intro-grid';
+  src: url("../fonts/IntroRegular.woff") format("woof"); }
+
+@font-face {
+  font-family: 'raleway-grid';
+  src: url("../fonts/RalewayBold.woff") format("woof");
+  font-waight: bold; }
+
+@font-face {
+  font-family: 'raleway-grid';
+  src: url("../fonts/RalewayExtraBold.woff") format("woof");
+  font-waight: 800; }
+
+@font-face {
+  font-family: 'raleway-grid';
+  src: url("../fonts/RalewayRegular.woff") format("woof"); }
+
+.button {
+  display: inline-block;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  background-color: #f0650D;
+  padding: 10px 60px;
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 2px;
+  text-align: center;
+  position: relative;
+  outline: none;
+  transition: background-color .1s ease;
+  cursor: pointer; }
+  .button ::after {
+    transition: background-color .2s ease;
+    position: absolute;
+    content: '';
+    height: 4px;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    opacity: .18;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    left: 0; }
+  .button :focus,
+  .button :hover {
+    text-decoration: none;
+    color: #fff; }
+  .button :hover {
+    background-color: #f37423; }
+    .button :hover ::after {
+      opacity: .22; }
+  .button :active {
+    background-color: #d85b0c; }
+    .button :active ::after {
+      opacity: .32; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+.grid {
+  display: grid; }
+
+.main-head {
+  min-height: 100vh;
+  background-image: url("../img/0-header.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  align-content: center; }
+  .main-head .header-content {
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px; }
+    .main-head .header-content h1 {
+      font-size: 60px;
+      font-family: intro-grid, sans-serif;
+      text-transform: uppercase;
+      font-weight: normal;
+      margin: 20px 0;
+      line-height: 1.5; }
+
+.main-head::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #293A43;
+  opacity: .82; }
