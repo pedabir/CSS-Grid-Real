@@ -1,0 +1,417 @@
+//--------------------------------
+//  VIEWPORTS
+//--------------------------------
+$small-breakpoint: 320px;
+$medium-breakpoint: 480px;
+$large-breakpoint: 768px;
+$desktop-breakpoint: 1025px;
+$max-content-breakpoint: 1280px;
+$xxlg-content-breakpoint: 1440px;
+@mixin respond($media, $max: null) {
+    @if $media == "print" {
+        @media only print {
+            @content;
+        }
+    } @else if $media == "small-down" {
+        @media only screen and (max-width: $medium-breakpoint - 1) {
+            @content;
+        }
+    } @else if $media == "small" {
+        @media only screen and (min-width: $small-breakpoint) and (max-width: $medium-breakpoint - 1) {
+            @content;
+        }
+    } @else if $media == "medium-down" {
+        @media only screen and (max-width: $large-breakpoint - 1) {
+            @content;
+        }
+    } @else if $media == "medium" {
+        @media only screen and (min-width: $medium-breakpoint) and (max-width: $large-breakpoint - 1) {
+            @content;
+        }
+    } @else if $media == "medium-up" {
+        @media only screen and (min-width: $medium-breakpoint) {
+            @content;
+        }
+    } @else if $media == "large-down" {
+        @media only screen and (max-width: $desktop-breakpoint - 1) {
+            @content;
+        }
+    } @else if $media == "large" {
+        @media only screen and (min-width: $large-breakpoint) and (max-width: $desktop-breakpoint - 1) {
+            @content;
+        }
+    } @else if $media == "large-up" {
+        @media only screen and (min-width: $large-breakpoint) {
+            @content;
+        }
+    } @else if $media == "desktop" {
+        @media only screen and (min-width: $desktop-breakpoint) {
+            @content;
+        }
+    } @else if $media == "xxlg" {
+        @media only screen and (min-width: $xxlg-content-breakpoint) {
+            @content;
+        }
+    } @else if type-of($media) == number and $max == null {
+        @media only screen and (min-width: $media) {
+            @content;
+        }
+    } @else if type-of($media) == number and type-of($max) == number {
+        @media only screen and (min-width: $media) and (max-width: $max - 1) {
+            @content;
+        }
+    }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper{
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  left:0;
+  transition: .6s;
+  }
+.open{
+  left: 200px;
+}
+header{
+    @include respond(large-up) {
+      height: 60px;
+      line-height: 60px;
+    }
+    padding: 0 0 0 10%;
+    display:block;
+    box-sizing:border-box;
+    width: 100%;
+    height: auto;
+    background-color: #373c3f;
+    .logo{
+      @include respond(desktop){
+        display: none;
+      }
+      @include respond(large-down) {
+        display: block;
+        height: 65px;
+        line-height: 60px;
+      }
+        float: left;
+      a{
+        font-family: Montserrat;
+        font-size: 19px;
+        font-weight: 400;
+        text-align: left;
+        color: white;
+        text-decoration: none;
+        }
+    }
+    .desktop-menu{
+        background-color: #373c3f;
+        overflow: hidden;
+        ul {
+          @include respond(large-down){
+            background: #444;
+            position: fixed;
+            top:0;
+            bottom: 0;
+            left: -200px;
+            width: 200px;
+            transition: .6s;
+            z-index: 1;
+          }
+          margin: 0;
+          padding: 0;
+          li {
+            @include respond(large-down){
+              float: none;
+              padding-top: 30px;
+              }
+            float: left;
+            display: block;
+            a {
+              padding: 0 20px;
+              display: block;
+              color: white;
+              font-size: 19px;
+              font-weight: 400;
+              text-align: left;
+              text-decoration: none;
+              text-transform: uppercase;
+            }
+            a:hover{
+              background: #000;
+            }
+          }
+        }
+        .open {
+          left: 0;
+        }
+      }
+    }
+    .hamburger{
+      @include respond(large-down) {
+        display: block;
+      }
+      display: none;
+      width: 16px;
+      height: 12px;
+      float: right;
+      margin: 25px;
+      position: relative;
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+    }
+    .hamburger:after {
+      content: "";
+      position: absolute;
+      display: block;
+      right: 0;
+      left: 0;
+      top: 5px;
+      height: 2px;
+      background: #fff;
+    }
+section {
+    @include respond(large-up) {
+      height: 340px;
+    }
+    @include respond(desktop){
+      height: 540px;
+    }
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(to top left, #19b4c6, #078aa4);
+    .title {
+      position: absolute;
+      top:25%;
+      left:10%;
+      h1 {
+        @include respond(large-up) {
+          font-size: 36px;
+          padding-bottom: 50px;
+        }
+        @include respond(desktop){
+          font-size: 50px;
+          font-weight: 400;
+        }
+        color: white;
+        font-family: sans-serif;
+        font-size: 22px;
+        padding-bottom: 10px;
+      }
+      a{
+        @include respond(large-up){
+          font-size: 24px;
+        }
+        @include respond(desktop){
+          font-size: 36px;
+        }
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+        display: inline;
+        h1 {
+          @include respond(large-up){
+              font-size: 24px;
+              padding-left: 200px;
+          }
+          @include respond(desktop){
+            font-size: 36px;
+            padding-left: 230px;
+          }
+          display: inline;
+          font-size: 14px;
+          font-weight: bold;
+          padding-left: 100px;
+        }
+      }
+    }
+  }
+.link-row {
+    @include respond(desktop){
+      height: 250px;
+    }
+    width: 100%;
+    height: 75px;
+    display: flex;
+    .title{
+      width: 80%;
+      position: relative;
+      height: 100%;
+      background-color: #373c3f;
+      font-size: 14px;
+      text-align: center;
+      display: inline-block;
+      box-sizing: border-box;
+      p {
+        @include respond(large-up){
+          font-size: 26px;
+          padding-left: 15%;
+        }
+        @include respond(desktop){
+          font-size: 42px;
+          padding-left: 10%;
+        }
+        top: 50%;
+        padding-left: 5%;
+        position: absolute;
+        color: #5b5064;
+        line-height: 0;
+        font-weight: bold;
+      }
+    }
+    .link {
+      width: 20%;
+      box-sizing: border-box;
+      display: inline-block;
+      height: 100%;
+      background-color: #bc3183;
+      position: relative;
+      a {
+        @include respond(desktop){
+          font-size: 42px;
+        }
+        top: 50%;
+        position: absolute;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 0;
+        left: 50%;
+        color: white;
+        text-decoration: none;
+
+      }
+    }
+  }
+.fotos {
+    @include respond(desktop){
+      flex-direction: row;
+        }
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .fotos-item1{
+      @include respond(medium-down){
+        height: 270px;
+      }
+      @include respond(medium-up){
+        height: 460px;
+      }
+      @include respond(large-up){
+        height: 100vh;
+      }
+      @include respond(desktop){
+        height: auto;
+      }
+
+      width: 100%;
+      height: auto;
+      position: relative;
+      text-align: center;
+      background-color: #5b0fa1;
+      a{
+        @include respond(large-up){
+          font-size: 36px;
+        }
+        position: absolute;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 32px;
+        top: 50%;
+        line-height: 0;
+      }
+    }
+    .fotos-item{
+      @include respond(large-up){
+        height: auto;
+      }
+      width: 100%;
+      height: auto;
+      display: block;
+      box-sizing: border-box;
+      position: relative;
+      text-align: center;
+      img{
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+.content{
+    @include respond(large-up){
+      height: 100vh;
+    }
+    .content-counteiner{
+      @include respond(desktop) {
+          font-family: Montserrat;
+          column-count: 2;
+          p {
+            padding: 0;
+          }
+        }
+      }
+      width: 100%;
+      height: auto;
+      display: block;
+      box-sizing: border-box;
+      height: auto;
+      background-color: #ebebeb;
+      padding: 15px 30px 0 40px;
+      h1 {
+        @include respond(large-up){
+          font-family: Montserrat;
+          color:  #088ca5;
+          font-size: 30px;
+          font-weight: 400;
+          line-height: 44px;
+          text-align: left;
+        }
+        @include respond(desktop) {
+          font-family: Montserrat;
+          color:  #088ca5;
+          font-size: 30px;
+          font-weight: 400;
+          line-height: 44px;
+          text-align: left;
+        }
+        font-family: Montserrat;
+        color:  #088ca5;
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 44px;
+        text-align: left;
+      }
+      p{
+        @include respond(large-up){
+          font-family: Montserrat;
+          color:  #515051;
+          font-size: 22px;
+          font-weight: 700;
+          line-height: 30px;
+          text-align: left;
+          text-shadow: 0px 1px 0px #ffffff;
+        }
+        @include respond(desktop) {
+          font-family: Montserrat;
+          color:  #515051;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 26px;
+          text-align: left;
+        }
+        font-family: Montserrat;
+        padding-bottom: 20px;
+        color:  #515051;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: left;
+      }
+    }
