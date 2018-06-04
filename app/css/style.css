@@ -16,46 +16,6 @@
   font-family: 'raleway-grid';
   src: url("../fonts/RalewayRegular.woff") format("woof"); }
 
-.button {
-  display: inline-block;
-  border: none;
-  color: #fff;
-  text-decoration: none;
-  background-color: #f0650D;
-  padding: 10px 60px;
-  font-size: 20px;
-  font-weight: 800;
-  border-radius: 2px;
-  text-align: center;
-  position: relative;
-  outline: none;
-  transition: background-color .1s ease;
-  cursor: pointer; }
-  .button ::after {
-    transition: background-color .2s ease;
-    position: absolute;
-    content: '';
-    height: 4px;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    opacity: .18;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
-    left: 0; }
-  .button :focus,
-  .button :hover {
-    text-decoration: none;
-    color: #fff; }
-  .button :hover {
-    background-color: #f37423; }
-    .button :hover ::after {
-      opacity: .22; }
-  .button :active {
-    background-color: #d85b0c; }
-    .button :active ::after {
-      opacity: .32; }
-
 * {
   margin: 0;
   padding: 0; }
@@ -82,6 +42,25 @@
       font-weight: normal;
       margin: 20px 0;
       line-height: 1.5; }
+    .main-head .header-content .button {
+      display: inline-block;
+      border: none;
+      color: #fff;
+      text-decoration: none;
+      background-color: #f0650D;
+      padding: 10px 60px;
+      font-family: raleway-grid, sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      border-radius: 2px;
+      text-align: center;
+      position: relative;
+      outline: none;
+      transition: background-color .1s ease;
+      cursor: pointer;
+      margin: 10px; }
+    .main-head .header-content .button-gray {
+      background-color: #4B5A65; }
 
 .main-head::before {
   content: "";
@@ -92,3 +71,62 @@
   right: 0;
   background-color: #293A43;
   opacity: .82; }
+
+.portfolio-section {
+  padding: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px; }
+  .portfolio-section .portfolio-item {
+    min-height: 32vh;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    align-content: center;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    font-family: raleway-grid, sans-serif;
+    position: relative;
+    transition: color .9s ease;
+    cursor: pointer; }
+    .portfolio-section .portfolio-item > * {
+      z-index: 1; }
+  .portfolio-section :hover {
+    color: #f0650D; }
+    .portfolio-section :hover ::before {
+      opacity: .55; }
+  .portfolio-section ::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #293A43;
+    opacity: .35;
+    transition: opacity .9s ease; }
+  .portfolio-section :nth-child(1) {
+    grid-column: 1/3; }
+  .portfolio-section :nth-child(5) {
+    grid-column: 2/4; }
+  .portfolio-section :nth-child(6) {
+    grid-column: 4;
+    grid-row: 2/4; }
+  .portfolio-section .buttoncase {
+    display: inline-block;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    background-color: #f0650D;
+    padding: 10px 60px;
+    font-family: raleway-grid, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+    outline: none;
+    transition: background-color .1s ease;
+    cursor: pointer;
+    grid-column: 1 /5; }

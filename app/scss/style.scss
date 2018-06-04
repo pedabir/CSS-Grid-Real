@@ -68,7 +68,7 @@ $dark: #293A43;
 $light: #EDEDED;
 $gray: #4B5A65;
 $gutter: 20px;
-
+///////////////////fonts////////////////
 @font-face {
     font-family: 'intro-grid';
     src: url('../fonts/IntroRegular.woff') format('woof');
@@ -87,56 +87,26 @@ $gutter: 20px;
     font-family: 'raleway-grid';
     src: url('../fonts/RalewayRegular.woff') format('woof');
 }
+/////////////////mixins////////////////////
+@mixin btn (){
+    display: inline-block;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    background-color: $accent;
+    padding: 10px 60px;
+    font-family: raleway-grid, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+    outline: none;
+    transition: background-color .1s ease;
+    cursor: pointer;
+      }
 
 
-.button{
-	display: inline-block;
-	border: none;
-	color: #fff;
-	text-decoration: none;
-	background-color: $accent;
-	padding: 10px 60px;
-	font-size: 20px;
-	font-weight: 800;
-	border-radius: 2px;
-	text-align: center;
-	position: relative;
-	outline: none;
-	transition: background-color .1s ease;
-	cursor: pointer;
-	::after{
-		transition: background-color .2s ease;
-		position: absolute;
-		content: '';
-		height: 4px;
-		bottom: 0;
-		width: 100%;
-		background-color: darken($accent, 50%);
-		opacity: .18;
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-        left: 0;
-    }
-    :focus, 
-    :hover
-    {
-		text-decoration: none;
-        color: #fff;
-    }
-    :hover
-    {
-        background-color: lighten($accent, 5%);
-		::after{
-        opacity: .22;
-        }
-    }
-	:active{
-        background-color: darken($accent, 5%);
-		::after{
-            opacity: .32;
-        }
-    }
-}
 
 
 * {
@@ -168,7 +138,15 @@ $gutter: 20px;
             margin: 20px 0;
             line-height: 1.5;
         }
+        .button{
+          @include btn();
+          margin: 10px;
+        }
+        .button-gray{
+          background-color: $gray;
+        }
     }
+
 }
 .main-head::before{
     content: "";
@@ -179,4 +157,60 @@ $gutter: 20px;
     right: 0;
     background-color: $dark;
     opacity: .82;
+
+
+    }
+.portfolio-section{
+  padding: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  .portfolio-item{
+    min-height: 32vh;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    align-content: center;
+    padding: $gutter;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    font-family: raleway-grid, sans-serif;
+    position: relative;
+    transition: color .9s ease;
+    cursor: pointer;
+    >*{
+      z-index: 1;
+    }
+  }
+  :hover{
+    color: $accent;
+    ::before{
+      opacity: .55;
+    }
+  }
+  ::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $dark;
+    opacity: .35;
+    transition: opacity .9s ease;
+  }
+  :nth-child(1){
+    grid-column: 1/3;
+  }
+  :nth-child(5){
+    grid-column: 2/4;
+  }
+  :nth-child(6){
+    grid-column: 4;
+    grid-row: 2/4;
+  }
+  .buttoncase{
+    @include btn();
+    grid-column: 1 /5;
+  }
 }
